@@ -1,5 +1,12 @@
+// eslint-disable-next-line prettier/prettier
+import { ApiProperty } from '@nestjs/swagger';
 export class createVenue {
-  id: string;
+  @ApiProperty()
   name: string;
-  location: string;
+
+  @ApiProperty()
+  age: number;
+
+  @ApiProperty()
+  breed: string;
 }
