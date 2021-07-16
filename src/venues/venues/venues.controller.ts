@@ -6,7 +6,7 @@ export class VenuesController {
   constructor(private readonly venuesService: VenuesService) {}
 
   @Get()
-  getVenues(): string {
+  getVnues(): string {
     return this.venuesService.getVenues();
   }
 }
