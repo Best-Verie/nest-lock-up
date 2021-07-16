@@ -6,7 +6,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   const config = new DocumentBuilder()
-    .setTitle('Cats example')
+    .setTitle('ticquet system apis')
     .setDescription('Events tickets reservation API')
     .setVersion('1.0')
     .addTag('venues')
