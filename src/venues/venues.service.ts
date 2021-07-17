@@ -21,4 +21,15 @@ export class VenuesService {
   async findAllVenues(): Promise<Venue[]> {
     return this.venueModel.find().exec();
   }
+  async findOneTask(id:string):Promise<Venue>{
+    return await this.venueModel.findOne({_id:id});
+  }
+
+  async updateVenue(id:string, venue:Venue): Promise<Venue>{
+    return await this.venueModel.findByIdAndUpdate(id,venue, {new:true})
+  }
+
+  async deleteVenue(id:string):Promise<Venue>{
+    return await this.venueModel.findByIdAndRemove(id);
+  }
 }
