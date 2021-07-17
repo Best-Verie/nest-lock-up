@@ -5,8 +5,5 @@ export class createVenue {
   name: string;
 
   @ApiProperty()
-  age: number;
-
-  @ApiProperty()
-  breed: string;
+  location:string;
 }
