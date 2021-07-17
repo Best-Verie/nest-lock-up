@@ -6,5 +6,5 @@ export interface EventsInterface{
     eventDate:string;
     StartTime:string;
     EndTime:string;
-    createdBy:string;
+    // createdBy:string;
 }

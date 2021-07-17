@@ -22,7 +22,7 @@ export class createEvent{
     @ApiProperty()
     EndTime:string;
     
-    @ApiProperty()
-    createdBy:string;
+    // @ApiProperty()
+    // createdBy:string;
 
 }

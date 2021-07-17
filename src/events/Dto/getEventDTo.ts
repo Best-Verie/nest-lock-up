@@ -21,8 +21,8 @@ export class getEvent{
     @ApiProperty()
     EndTime:string;
     
-    @ApiProperty()
-    createdBy:string;
+    // @ApiProperty()
+    // createdBy:string;
 
     @ApiProperty()
     createdAt: Date;
