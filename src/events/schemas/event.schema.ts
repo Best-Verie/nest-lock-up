@@ -5,6 +5,7 @@ export const EventSchema = new mongoose.Schema({
     description: String,
     venue: {type:mongoose.Schema.Types.ObjectId, ref:'venues'},
     eventCategory: {type:mongoose.Schema.Types.ObjectId, ref:'event_categories'},
+    numberofAvailableTickets:Number,
     eventDate: Date,
     startTime: String,
     endTime: String,
@@ -12,16 +13,3 @@ export const EventSchema = new mongoose.Schema({
     createdAt: { type: Date, default: Date.now },
     updatedAt: { type: Date, default: Date.now }
 });
-
-export interface IEvent extends mongoose.Document {
-    title: string;
-    description: string;
-    venue: string;
-    eventCategory:string;
-    eventDate: Date;
-    startTime: String;
-    endTime: String;
-    // createdBy: String;
-    createdAt: Date;
-    updatedAt: Date;
-} 

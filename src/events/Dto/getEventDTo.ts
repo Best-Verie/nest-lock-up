@@ -11,6 +11,9 @@ export class getEvent{
 
     @ApiProperty()
     eventCategory:string;
+
+    @ApiProperty()
+    numberofAvailableTickets:number;
     
     @ApiProperty()
     eventDate:string;

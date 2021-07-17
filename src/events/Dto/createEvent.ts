@@ -14,6 +14,9 @@ export class createEvent{
     eventCategory:string;
     
     @ApiProperty()
+    numberofAvailableTickets:number;
+    
+    @ApiProperty()
     eventDate:string;
     
     @ApiProperty()
