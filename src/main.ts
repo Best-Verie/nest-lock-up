@@ -11,7 +11,7 @@ async function bootstrap() {
     .setVersion('1.0')
     .addTag('venues')
     .addTag('events')
-    .addTag('eventCategories')
+    .addTag('event-categories')
     .addTag('ticketCategories')
     .addTag('tickets')
     .addTag('userCategories')
