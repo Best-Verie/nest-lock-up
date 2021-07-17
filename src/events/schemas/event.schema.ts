@@ -4,7 +4,7 @@ export const EventSchema = new mongoose.Schema({
     title: String,
     description: String,
     venue: {type:mongoose.Schema.Types.ObjectId, ref:'venues'},
-    eventCategory: {type:mongoose.Schema.Types.ObjectId, ref:'event-categories'},
+    eventCategory: {type:mongoose.Schema.Types.ObjectId, ref:'event_categories'},
     eventDate: Date,
     startTime: String,
     endTime: String,
