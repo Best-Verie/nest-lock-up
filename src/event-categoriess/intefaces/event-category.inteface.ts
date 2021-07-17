@@ -1,4 +1,3 @@
 export interface EventCategoriesInterface{
-    name: string;
-    location: string;
+    category_name: string;
 }
