@@ -6,8 +6,8 @@ export const EventSchema = new mongoose.Schema({
     venue: {type:mongoose.SchemaTypes.ObjectId, ref:'venues'},
     eventCategory: {type:mongoose.SchemaTypes.ObjectId, ref:'event-categories'},
     eventDate: Date,
-    startTime: Date,
-    endTime: Date,
+    startTime: String,
+    endTime: String,
     createdBy: { type: mongoose.Schema.Types.ObjectId, ref: 'user' },
     createdAt: { type: Date, default: Date.now },
     updatedAt: { type: Date, default: Date.now }
@@ -19,9 +19,9 @@ export interface IEvent extends mongoose.Document {
     venue: string;
     eventCategory:string;
     eventDate: Date;
-    startTime: Date;
-    endTime: Date;
-    createdBy: string;
+    startTime: String;
+    endTime: String;
+    createdBy: String;
     createdAt: Date;
     updatedAt: Date;
 } 
