@@ -9,9 +9,14 @@ export class EventCategoriessService {
     private eventCategoriesModel: Model<EventCategoriesInterface>,
 ){}
 
-async createEventCategory(createEventCategoryDto: EventCategoriesDto): Promise<EventCategoriesDto> {
+ async createEventCategory(createEventCategoryDto: EventCategoriesDto): Promise<EventCategoriesDto> {
     const createdEventCategory = new this.eventCategoriesModel(createEventCategoryDto);
     return createdEventCategory.save();
   }
+
+
+async getAllEventCategories(){
+    return this.eventCategoriesModel.find();
+}
 
 }

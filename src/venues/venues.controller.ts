@@ -1,12 +1,19 @@
 import { VenuesService } from './venues.service';
 import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
 import { createVenue } from './DTO/createVenue';
+import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 
 @Controller('venues')
+@ApiTags('venues')
 export class VenuesController {
   constructor(private readonly venuesService: VenuesService) {}
 
   @Get()
+  @ApiOkResponse({
+    type: createVenue,
+    description:'All venues'
+  })
+  
   async getAllVenues(){
     return this.venuesService.findAllVenues();
   }
