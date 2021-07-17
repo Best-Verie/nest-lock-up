@@ -2,7 +2,7 @@ import { VenuesService } from './venues.service';
 import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
 import { createVenue } from './DTO/createVenue';
 
-@Controller()
+@Controller('venues')
 export class VenuesController {
   constructor(private readonly venuesService: VenuesService) {}
 
