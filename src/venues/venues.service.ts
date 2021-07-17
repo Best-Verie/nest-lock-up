@@ -1,16 +1,24 @@
+import { createVenue } from './DTO/createVenue';
 import { Venue } from './interfaces/Venue.inteface';
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
+import { Model } from 'mongoose';
 
 @Injectable()
 export class VenuesService {
  
+  constructor(
+    @Inject('Venue_MODEL')
+    private venueModel: Model<Venue>,
+  ) {}
+
   private readonly venues: Venue[] = [];
 
-  create(venue: Venue) {
-    this.venues.push(venue);
-    return this.venues;
+  async createVenue(createVenueDto: createVenue): Promise<Venue> {
+    const createdVenue = new this.venueModel(createVenueDto);
+    return createdVenue.save();
   }
-  getVenues(){
-    return this.venues;
+
+  async findAllVenues(): Promise<Venue[]> {
+    return this.venueModel.find().exec();
   }
 }

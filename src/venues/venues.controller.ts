@@ -8,11 +8,11 @@ export class VenuesController {
 
   @Get()
   async getAllVenues(){
-    return this.venuesService.getVenues();
+    return this.venuesService.findAllVenues();
   }
 
   @Post()
    async create(@Body() createVenueDto: createVenue) {
-    this.venuesService.create(createVenueDto);
+    this.venuesService.createVenue(createVenueDto);
   }
 }
