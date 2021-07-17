@@ -13,12 +13,16 @@ export class VenuesController {
     type: createVenue,
     description:'All venues'
   })
-  
+
   async getAllVenues(){
     return this.venuesService.findAllVenues();
   }
 
   @Post()
+  @ApiOkResponse({
+    type: createVenue,
+    description:'add venues'
+  })
    async create(@Body() createVenueDto: createVenue):Promise<createVenue>{
     return this.venuesService.createVenue(createVenueDto);
   }
