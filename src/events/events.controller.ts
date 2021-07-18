@@ -25,7 +25,7 @@ export class EventsController {
         type: createEvent,
         description:'create events'
       })
-    async createEventCategory(@Body() eventsDto: createEvent){
+    async createEvent(@Body() eventsDto: createEvent){
       return this.eventsService.createEvent(eventsDto);
     }
 

@@ -5,7 +5,7 @@ import { UserInterface } from './interfaces/user.interface';
 
 @Injectable()
 export class UsersService {
-    constructor( @Inject('User_Model')
+    constructor( @Inject('User_MODEL')
     private usersModel: Model<UserInterface>,
 ){}
 
