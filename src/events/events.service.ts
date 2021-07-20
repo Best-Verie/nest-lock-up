@@ -20,7 +20,7 @@ async getAllEvents(){
 }
 
 async findEventByTitle(title:string){
-    return this.eventsModel.find({title});
+    return this.eventsModel.find({'title':title});
 }
 
 async findEventByCategory(eventCategory:string){

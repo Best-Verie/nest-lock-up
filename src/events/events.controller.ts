@@ -39,7 +39,7 @@ export class EventsController {
       return this.eventsService.findEventByVenue(venue);
     }
 
-    @Get('filterByTitle')
+    @Get('filterByTitle/:title')
     async filterByTitle(@Param('title') title:string){
       return this.eventsService.findEventByTitle(title);
     }
