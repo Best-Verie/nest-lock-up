@@ -20,15 +20,28 @@ async getAllEvents(){
 }
 
 async findEventByTitle(title:string){
-    return this.eventsModel.find({title}).populate('venue').populate('eventCategory').exec();
+    return this.eventsModel.find({title});
 }
 
 async findEventByCategory(eventCategory:string){
     return this.eventsModel.find({eventCategory}).populate('venue').populate('eventCategory').exec()
 }
 
-async findEventByVenue(venue:string){
-    return this.eventsModel.find({venue}).populate('venue').populate('eventCategory').exec()
+
+
+// async findEventByVenue(venueName:string){
+//     return this.eventsModel.find({'venue.name':venueName}).populate('venue').populate('eventCategory').exec()
+// }
+
+
+async findEventByVenue(venueName:string){
+    return this.eventsModel.find().
+    populate({
+      path: 'venue',
+      match: { name: venueName },
+     select: 'name - _id'
+    }).
+    exec()
 }
 
 

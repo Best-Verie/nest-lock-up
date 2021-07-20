@@ -29,8 +29,12 @@ export class EventsController {
       return this.eventsService.createEvent(eventsDto);
     }
 
+    // @Get(':id')
+    // async findOne(@Param('id') id):Promise<Tasks>{
+    //     return this.tasksService.findOneTask(id)
+    // }
 
-    @Get('filterByVenues')
+    @Get('filterByVenues/:venue')
     async filterByVenue(@Param('venue') venue: string){
       return this.eventsService.findEventByVenue(venue);
     }
