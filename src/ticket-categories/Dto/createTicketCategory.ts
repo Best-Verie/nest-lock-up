@@ -1,6 +1,6 @@
 import { ApiProperty } from "@nestjs/swagger";
 
-export class createEvent{
+export class TicketCategoryDto{
     @ApiProperty()
     categoryName:string;
 

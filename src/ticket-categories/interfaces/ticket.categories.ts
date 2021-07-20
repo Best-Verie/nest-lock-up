@@ -1,4 +1,4 @@
 export interface TicketCategoriesInterface{
-    name:string;
+    categoryName:string;
     createdBy:string;
 }
