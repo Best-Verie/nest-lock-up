@@ -4,7 +4,7 @@ import { Body, Controller, Get, Post } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 
 @Controller('ticket-categories')
-@ApiTags('ticket-categories')
+@ApiTags('ticketCategories')
 export class TicketCategoriesController {
     constructor(private readonly ticketCategoriesService:TicketCategoriesService){}
     
