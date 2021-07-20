@@ -16,6 +16,6 @@ async createTicketCategory(createTicketCategoryDto: TicketCategoryDto): Promise<
 
 
 async getAllTicketCategories(){
-    return this.ticketCategoriesModel.find();
+    return this.ticketCategoriesModel.find().populate('user').exec();
 }
 }
