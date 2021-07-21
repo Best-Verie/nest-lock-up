@@ -1,6 +1,6 @@
 import { getEvent } from './Dto/getEventDTo';
 import { createEvent } from './Dto/createEvent';
-import { Body, Controller, Get, Post, Param } from '@nestjs/common';
+import { Body, Controller, Get, Post, Param, Put, Delete } from '@nestjs/common';
 import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { EventsService } from './events.service';
 
@@ -43,5 +43,17 @@ export class EventsController {
     async filterByTitle(@Param('title') title:string){
       return this.eventsService.findEventByTitle(title);
     }
+
+ 
+    @Put(':id')
+    async update( @Param('id') id, @Body() createEvent: createEvent):Promise<createEvent>{
+      return this.eventsService.updateEvent(id, createEvent);
+    }
+  
+    @Delete(':id')
+    async delete(@Param('id') id):Promise<createEvent>{
+        return this.eventsService.deleteEvent(id);
+    }
+
 
 }

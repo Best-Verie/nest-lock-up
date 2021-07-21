@@ -45,4 +45,13 @@ async findEventByVenue(venueName:string){
 }
 
 
+async updateEvent(id:string, Event:createEvent): Promise<createEvent>{
+    return await this.eventsModel.findByIdAndUpdate(id,Event, {new:true})
+  }
+
+  async deleteEvent(id:string):Promise<createEvent>{
+    return await this.eventsModel.findByIdAndRemove(id);
+  }
+
+
 }

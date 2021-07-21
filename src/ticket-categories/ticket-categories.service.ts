@@ -9,13 +9,21 @@ export class TicketCategoriesService {
     private ticketCategoriesModel: Model<TicketCategoriesInterface>,
 ){}
 
-async createTicketCategory(createTicketCategoryDto: TicketCategoryDto): Promise<TicketCategoryDto> {
-    const createdTicketCategory = new this.ticketCategoriesModel(createTicketCategoryDto);
-    return createdTicketCategory.save();
+  async createTicketCategory(createTicketCategoryDto: TicketCategoryDto): Promise<TicketCategoryDto> {
+        const createdTicketCategory = new this.ticketCategoriesModel(createTicketCategoryDto);
+        return createdTicketCategory.save();
+  }
+    
+    
+  async getAllTicketCategories(){
+        return this.ticketCategoriesModel.find().populate('user').exec();
   }
 
+  async updateTicketCategory(id:string, ticketCategory:TicketCategoryDto): Promise<TicketCategoryDto>{
+    return await this.ticketCategoriesModel.findByIdAndUpdate(id,ticketCategory, {new:true})
+  }
 
-async getAllTicketCategories(){
-    return this.ticketCategoriesModel.find().populate('user').exec();
-}
+  async deleteTicketCategory(id:string):Promise<TicketCategoryDto>{
+    return await this.ticketCategoriesModel.findByIdAndRemove(id);
+  }
 }
