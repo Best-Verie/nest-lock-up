@@ -5,7 +5,7 @@ export const EventSchema = new mongoose.Schema({
     description: String,
     venue: {type:mongoose.Schema.Types.ObjectId, ref:'venues'},
     eventCategory: {type:mongoose.Schema.Types.ObjectId, ref:'event_categories'},
-    numberofAvailableTickets:Number,
+    tickets:{type:mongoose.Schema.Types.ObjectId, ref:'tiket-categories'},
     eventDate: Date,
     startTime: String,
     endTime: String,

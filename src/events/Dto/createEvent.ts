@@ -12,9 +12,9 @@ export class createEvent{
 
     @ApiProperty()
     eventCategory:string;
-    
+
     @ApiProperty()
-    numberofAvailableTickets:number;
+    tickets:string;
     
     @ApiProperty()
     eventDate:string;

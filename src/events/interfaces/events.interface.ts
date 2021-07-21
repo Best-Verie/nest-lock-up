@@ -3,7 +3,7 @@ export interface EventsInterface{
     description:string;
     venue:string;
     eventCategory:string;
-    numberofAvailableTickets:number;
+    tickets:string;
     eventDate:string;
     StartTime:string;
     EndTime:string;
