@@ -18,5 +18,11 @@ export class EventCategoriessService {
 async getAllEventCategories(){
     return this.eventCategoriesModel.find();
 }
+async updateEventCategory(id:string, EventCategoryDto:EventCategoriesDto): Promise<EventCategoriesDto>{
+  return await this.eventCategoriesModel.findByIdAndUpdate(id,EventCategoryDto, {new:true})
+}
 
+async deleteEventCategory(id:string):Promise<EventCategoriesDto>{
+  return await this.eventCategoriesModel.findByIdAndRemove(id);
+}
 }
