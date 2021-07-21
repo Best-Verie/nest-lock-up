@@ -1,7 +1,6 @@
 import * as mongoose from 'mongoose';
 
 export const TicketCategoriesSchema = new mongoose.Schema({
-    eventId:{ type: mongoose.Schema.Types.ObjectId, ref: 'events' },
     categoryName: String,
     categoryPrice:Number,
     numberofAvailableTickets:Number,
