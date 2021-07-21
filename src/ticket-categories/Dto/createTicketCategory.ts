@@ -8,7 +8,7 @@ export class TicketCategoryDto{
     categoryName:string;
 
     @ApiProperty()
-    categoryPrice:string;
+    categoryPrice:number;
 
     
     @ApiProperty()

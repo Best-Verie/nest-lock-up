@@ -1,7 +1,7 @@
 export interface TicketCategoriesInterface{
     eventId:string;
     categoryName:string;
-    categoryPrice:string;
+    categoryPrice:number;
     numberofAvailableTickets:number;
     createdBy:string;
 }
