@@ -16,7 +16,7 @@ async createEvent(createEventDto: createEvent): Promise<createEvent> {
 
 
 async getAllEvents(){
-    return this.eventsModel.find().populate('venue').populate('eventCategory').exec();
+    return this.eventsModel.find().populate('venue').populate('eventCategory').populate('ticket-categories').exec();
 }
 
 async findEventByTitle(title:string){
@@ -24,7 +24,7 @@ async findEventByTitle(title:string){
 }
 
 async findEventByCategory(eventCategory:string){
-    return this.eventsModel.find({eventCategory}).populate('venue').populate('eventCategory').exec()
+    return this.eventsModel.find({eventCategory}).populate('venue').populate('eventCategory').populate('tickets').exec()
 }
 
 

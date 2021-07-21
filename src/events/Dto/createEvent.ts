@@ -14,7 +14,7 @@ export class createEvent{
     eventCategory:string;
 
     @ApiProperty()
-    tickets:string;
+    tickets:[];
     
     @ApiProperty()
     eventDate:string;
