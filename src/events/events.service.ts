@@ -10,13 +10,13 @@ export class EventsService {
 ){}
 
 async createEvent(createEventDto: createEvent): Promise<createEvent> {
-    const createdEvent = new this.eventsModel(createEventDto).populate('venue').populate('eventCategory').populate('ticket').execPopulate();
+    const createdEvent = new this.eventsModel(createEventDto).populate('venue').populate('eventCategory').populate('tickets').execPopulate();
     return  (await createdEvent).save();
   }
 
 
 async getAllEvents(){
-    const eventToSave =  this.eventsModel.find().populate('venue').populate('eventCategory').populate('ticket').exec();
+    return this.eventsModel.find().populate('venue').populate('eventCategory').populate('tickets').exec();
 }
 
 async findEventByTitle(title:string){
