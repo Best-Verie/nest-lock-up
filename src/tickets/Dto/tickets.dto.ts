@@ -1,7 +1,16 @@
+import { ApiProperty } from "@nestjs/swagger";
+
 export class createTicket{
+    @ApiProperty()
     ticketNo:number;
-    category:string;
+
+    @ApiProperty()
     event:string;
+
+    @ApiProperty()
+    amountPaid:number;
+
+    @ApiProperty()
     issuedTo:string;
-    date:string;
+
 }
