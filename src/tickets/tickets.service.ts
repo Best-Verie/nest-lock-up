@@ -10,7 +10,7 @@ export class TicketsService {
 ){}
 
     async createtickets(createticketsDto: createTicket): Promise<createTicket> {
-        var createdtickets = new this.ticketsModel(createticketsDto).populate('event').populate('user').execPopulate();
+        var createdtickets = new this.ticketsModel(createticketsDto).populate('event').populate('issuedTo').execPopulate();
         const ticketCategories = createticketsDto.event
         // for(int i=0; i<
         // console.log(createdtickets);
