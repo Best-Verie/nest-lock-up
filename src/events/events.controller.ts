@@ -30,7 +30,7 @@ export class EventsController {
     }
 
     @Get(':id')
-    async findOne(@Param('id') id):Promise<createEvent>{
+    async findOne(@Param('id') id:string){
         return this.eventsService.findEventById(id)
     }
 

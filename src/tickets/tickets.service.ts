@@ -3,6 +3,7 @@ import { createTicket } from './Dto/tickets.dto';
 import { Inject, Injectable } from '@nestjs/common';
 import { Model } from 'mongoose';
 import { TicketsInterface } from './interfaces/tickets.interface';
+import { TicketCategoriesInterface } from 'src/ticket-categories/interfaces/ticket.categories';
 
 @Injectable()
 export class TicketsService {
@@ -10,6 +11,8 @@ export class TicketsService {
     private ticketsModel: Model<TicketsInterface>,
     @Inject('Event_MODEL')
     private eventsModel: Model<EventsInterface>,
+    @Inject('TicketCategories_MODEL')
+    private ticketCategoriesModel: Model<TicketCategoriesInterface>
     
 ){}
 
@@ -21,20 +24,27 @@ export class TicketsService {
         var createdtickets = new this.ticketsModel(createticketsDto).populate('event').populate('issuedTo').populate('ticket').execPopulate();
         var preferedCategory = (await createdtickets).preferredTicketCategory;
 
-        // var preferesCategoryId =
 
-        // var availableTicketCategories;
-        // for(var i=0;i<event.tickets.length;i++){
-        //     if(event.tickets[i]==preferedCategory){
-        //         availableTicketCategories.push(event.tickets[i].ticketCategory);
-        //     }
-        // }
-        // // if(preferedCategory==)
-        // const ticketCategories = event.tickets.map(ticket => ticket.ticketCategory);
-        // // for(int i=0; i<
-        // console.log(createdtickets);
-        return (await createdtickets).save();
-        // return null;
+        for(var i=0;i<event.tickets.length;i++){
+            var eventsAvailableTicketCategories = await this.ticketCategoriesModel.findOne({'_id':event.tickets[i]});
+
+            if(eventsAvailableTicketCategories.categoryName==preferedCategory){
+                
+                var amountToBePaid = eventsAvailableTicketCategories.categoryPrice;
+                var paidAmount = (await createdtickets).amountPaid;
+                var balance = paidAmount - amountToBePaid;
+                if(balance<0){
+                    throw new Error('You have not enough money to pay for this ticket');
+                }else{
+                    return (await createdtickets).save();
+                }
+            }
+            else{
+                throw new Error('The ticket caegory you chose does not exist');
+            }
+
+        }
+
   }
     
     

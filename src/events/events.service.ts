@@ -28,7 +28,7 @@ async findEventByCategory(eventCategory:string){
 }
 
 async findEventById(id:string){
-return  await this.eventsModel.findOne({id}).populate('venue').populate('eventCategory').populate('tickets').exec();
+return  this.eventsModel.findOne({'_id':id}).populate('venue').populate('eventCategory').populate('tickets').exec();
 
 }
 
