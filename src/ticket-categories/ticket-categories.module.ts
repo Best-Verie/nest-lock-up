@@ -7,6 +7,7 @@ import { ticketCategoriesProvider } from './ticket.categories.provider';
 @Module({
   imports:[DatabaseModule],
   providers: [TicketCategoriesService,...ticketCategoriesProvider],
-  controllers: [TicketCategoriesController]
+  controllers: [TicketCategoriesController],
+  exports:[...ticketCategoriesProvider]
 })
 export class TicketCategoriesModule {}

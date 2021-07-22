@@ -9,5 +9,6 @@ import { eventsProvider } from './event.provider';
   imports:[DatabaseModule],
   controllers: [EventsController],
   providers: [EventsService,...eventsProvider],
+  exports:[...eventsProvider]
 })
 export class EventsModule {}
