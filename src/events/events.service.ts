@@ -27,6 +27,10 @@ async findEventByCategory(eventCategory:string){
     return this.eventsModel.find({eventCategory}).populate('venue').populate('eventCategory').populate('tickets').exec()
 }
 
+async findEventById(id:string){
+return  await this.eventsModel.findOne({id}).populate('venue').populate('eventCategory').populate('tickets').exec();
+
+}
 
 
 // async findEventByVenue(venueName:string){

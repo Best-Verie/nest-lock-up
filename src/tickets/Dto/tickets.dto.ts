@@ -8,6 +8,9 @@ export class createTicket{
     event:string;
 
     @ApiProperty()
+    preferredTicketCategory:string;
+
+    @ApiProperty()
     amountPaid:number;
 
     @ApiProperty()
