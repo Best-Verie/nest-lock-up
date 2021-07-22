@@ -40,7 +40,7 @@ export class TicketsService {
                     }else{
                         var ticket = new this.ticketsModel({
                             ticketNo:ticketNo,
-                            event: event._id,
+                            amountPaid:paidAmount,
                             preferredTicketCategory: eventsAvailableTicketCategories.categoryName,
                             issuedTo: createticketsDto.issuedTo,
                         });
