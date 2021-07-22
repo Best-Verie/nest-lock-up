@@ -5,9 +5,6 @@ export class createTicket{
     ticketNo:number;
 
     @ApiProperty()
-    event:string;
-
-    @ApiProperty()
     preferredTicketCategory:string;
 
     @ApiProperty()

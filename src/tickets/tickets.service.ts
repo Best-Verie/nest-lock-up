@@ -18,11 +18,11 @@ export class TicketsService {
 
 
 
-    async createtickets(createticketsDto: createTicket){
-        const event = await this.eventsModel.findOne({ event: createticketsDto.event }).populate('venue').populate('eventCategory').populate('tickets').exec();
+    async createtickets(event_id:string, createticketsDto: createTicket){
+        const event = await this.eventsModel.findOne({ event: event_id }).populate('venue').populate('eventCategory').populate('tickets').exec();
     
-        var createdtickets = new this.ticketsModel(createticketsDto).populate('event').populate('issuedTo').populate('ticket').execPopulate();
-        var preferedCategory = (await createdtickets).preferredTicketCategory;
+        // var createdtickets = new this.ticketsModel(createticketsDto).populate('event').populate('issuedTo').populate('ticket').execPopulate();
+        var preferedCategory = createticketsDto.preferredTicketCategory;
 
 
         for(var i=0;i<event.tickets.length;i++){
@@ -34,7 +34,7 @@ export class TicketsService {
 
                     var ticketNo=j++;
                     var amountToBePaid = eventsAvailableTicketCategories.categoryPrice;
-                    var paidAmount = (await createdtickets).amountPaid;
+                    var paidAmount = createticketsDto.amountPaid;
                     if(paidAmount<amountToBePaid){
                         throw new Error('You have not enough money to pay for this ticket');
                     }else{
