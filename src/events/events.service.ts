@@ -9,10 +9,6 @@ export class EventsService {
     private eventsModel: Model<EventsInterface>,
 ){}
 
-async createEvent(createEventDto: createEvent): Promise<createEvent> {
-    const createdEvent = new this.eventsModel(createEventDto).populate('venue').populate('eventCategory').populate('tickets').execPopulate();
-    return  (await createdEvent).save();
-  }
 
 
 async getAllEvents(){
@@ -32,6 +28,18 @@ return  this.eventsModel.findOne({'_id':id}).populate('venue').populate('eventCa
 
 }
 
+  
+
+async createEvent(createEventDto: createEvent): Promise<createEvent> {
+  const foundEvent = await (await this.eventsModel.findOne({'title':createEventDto.title,'eventDate':createEventDto.eventDate})).execPopulate();
+  
+  if(foundEvent){
+    throw new Error("Cant save the same event twice! (same title and date issues)");
+  }
+  const createdEvent = new this.eventsModel(createEventDto).populate('venue').populate('eventCategory').populate('tickets').execPopulate();
+
+  return  (await createdEvent).save();
+}
 
 // async findEventByVenue(venueName:string){
 //     return this.eventsModel.find({'venue.name':venueName}).populate('venue').populate('eventCategory').exec()
