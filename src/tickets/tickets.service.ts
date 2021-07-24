@@ -16,17 +16,18 @@ export class TicketsService {
     
 ){}
 
-
+async getrelatedEvents(id:string){
+    return await this.eventsModel.findOne({'_id':id}).populate('venue').populate('eventCategory').populate('tickets').exec();
+}
 
     async createtickets(event_id:string, createticketsDto: createTicket){
-        const event = await this.eventsModel.findOne({ event: event_id }).populate('venue').populate('eventCategory').populate('tickets').exec();
+        const event = this.getrelatedEvents(event_id);
     
-        // var createdtickets = new this.ticketsModel(createticketsDto).populate('event').populate('issuedTo').populate('ticket').execPopulate();
         var preferedCategory = createticketsDto.preferredTicketCategory;
 
 
-        for(var i=0;i<event.tickets.length;i++){
-            var eventsAvailableTicketCategories = await this.ticketCategoriesModel.findOne({'_id':event.tickets[i]});
+        for(var i=0;i<(await event).tickets.length;i++){
+            var eventsAvailableTicketCategories = await this.ticketCategoriesModel.findOne({'_id':(await event).tickets[i]});
 
             if(eventsAvailableTicketCategories.categoryName==preferedCategory){
 
@@ -58,7 +59,7 @@ export class TicketsService {
     
     
   async getAllTickets(){
-        return this.ticketsModel.find().populate('event').populate('user').exec();
+        return this.ticketsModel.find().populate('event').populate('issuedTo').exec();
   }
 
 }
